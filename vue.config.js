@@ -1,0 +1,26 @@
+// vue.config.js
+let pagesConfig = require('./page.config.js')
+const px2rem = require('postcss-px2rem')
+
+const postcss = px2rem({
+    remUnit: 75
+})
+
+module.exports = {
+    baseUrl: './',
+    outputDir: undefined,
+    assetsDir: undefined,
+    runtimeCompiler: undefined,
+    productionSourceMap: undefined,
+    parallel: undefined,
+    pages: pagesConfig,
+    css: {
+        loaderOptions: {
+            postcss: {
+                plugins: [
+                    postcss
+                ]
+            }
+        }
+    },
+}
