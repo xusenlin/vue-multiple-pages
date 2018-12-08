@@ -1,12 +1,14 @@
 {
-  "name": "siguibao",
+  "name": "vueCli3Mobile",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "fastclick": "^1.0.6",
     "normalize.css": "^8.0.0",
     "vue": "^2.5.17"
   },

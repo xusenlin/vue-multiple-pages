@@ -1,4 +1,6 @@
 const glob = require("glob")
+const pageConfig = require("./src/config/page.js")
+
 try {
     entries = glob('src/pages/*/index.js', {sync: true})
 } catch (err) {
@@ -10,7 +12,6 @@ try {
 
 let pages = {}
 let commonConfig = {
-    title: '网站标题在page.config.js里面修改',
     template:'public/index.html',
 }
 
@@ -19,6 +20,7 @@ entries.forEach(page=>{
     pages[name] = {
         entry: 'src/pages/'+name+'/index.js',
         filename: name + '.html',
+        title:pageConfig.hasOwnProperty(name) ? pageConfig[name].title : '',
         ...commonConfig
     }
 })
