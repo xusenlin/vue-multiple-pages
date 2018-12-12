@@ -1,7 +1,7 @@
 <template>
     <div id="app" class="index">
-        <p>ヾ(^∀^)ﾉ</p>
-        <p>vueCli3Mobile</p>
+        <p class="one-px-t">ヾ(^∀^)ﾉ</p>
+        <p class="one-px">vueCli3Mobile</p>
     </div>
 </template>
 
@@ -41,5 +41,8 @@
         flex-direction: column;
         color: #fff;
         font-size: 16px;
+        p{
+            padding: 6px;
+        }
     }
 </style>

@@ -11,5 +11,5 @@ export default {
     apiPrefix : "",
     timeout:1000,
     localStorageKey:'KEYXXX',
-
+    designSize:375,//设计稿宽度 375 or 750
 }
