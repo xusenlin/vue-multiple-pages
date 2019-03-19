@@ -7,7 +7,7 @@ const postcss = px2rem({
 })
 
 module.exports = {
-    baseUrl: './',
+    publicPath: './',
     outputDir: undefined,
     assetsDir: undefined,
     runtimeCompiler: undefined,
