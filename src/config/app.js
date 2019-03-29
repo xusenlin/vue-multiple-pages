@@ -10,6 +10,9 @@ export default {
     apiUrl : nodeDevEnv ? devApiUrl : proApiUrl,
     apiPrefix : "",
     timeout:1000,
-    localStorageKey:'KEYXXX',
-    designSize:375,//设计稿宽度 375 or 750
+    accessTokenKey:'ACCESS_TOKEN',
+    userInfoKey:'USER_INFO',
+    requestRetry:4,
+    requestRetryDelay:800,
+    designSize:375,//设计稿宽度 375
 }

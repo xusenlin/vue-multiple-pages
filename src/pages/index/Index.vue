@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import { Dialog } from 'vant';
+    import {wechatSignature} from '../../utils/weixin'
     export default {
         name: 'app',
         data: function () {
@@ -16,14 +16,8 @@
         },
         methods: {},
         mounted() {
-            Dialog.confirm({
-                title: '标题',
-                message: '一个开箱即用的移动端vue多页面脚手架。规划了目录，添加了常用组件和库。'
-            }).then(() => {
-                // on confirm
-            }).catch(() => {
-                // on cancel
-            });
+
+            console.log(wechatSignature().then(r=>{alert('ttt')}).catch(r=>{alert(r)}))
         },
         beforeDestroy: function () {
 

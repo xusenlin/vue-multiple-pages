@@ -1,6 +1,7 @@
 import Axios from 'axios'
 import Config from '../config/app.js'
-import { Toast } from 'vant';
+import {getToken}  from '../utils/app'
+//import { Toast } from 'vant';
 
 const service = Axios.create({
     baseURL: Config.apiUrl + '/' + Config.apiPrefix,
@@ -10,16 +11,18 @@ const service = Axios.create({
     timeout: Config.timeout
 })
 
+service.defaults.retry = Config.requestRetry;
+service.defaults.retryDelay = Config.requestRetryDelay;
 
 service.interceptors.request.use(
     config => {
 
         if(!config.closeLoading){
             //加载提示
-            window.loadingInstance = Toast.loading({
-                mask: true,
-                message: '加载中...'
-            });
+            // window.loadingInstance = Toast.loading({
+            //     mask: true,
+            //     message: '加载中...'
+            // });
         }
 
         let noParameters = config.url.indexOf('?')  == -1;
@@ -45,7 +48,7 @@ service.interceptors.response.use(
 
         const res = response
         if (res.status !== 200) {
-            Toast('数据返回出错');
+            //Toast('数据返回出错');
             return Promise.reject('error')
         } else {
             if(res.data.resultCode != 200){
@@ -62,7 +65,7 @@ service.interceptors.response.use(
                 window.loadingInstance.clear();
             }
         },300);
-        Toast("请求未响应");
+        //Toast("请求未响应");
         return Promise.reject(error)
     }
 )

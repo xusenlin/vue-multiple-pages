@@ -17,9 +17,7 @@ module.exports = {
     css: {
         loaderOptions: {
             postcss: {
-                plugins: [
-                    postcss
-                ]
+                plugins: [postcss]
             }
         }
     },

@@ -1,4 +1,4 @@
-
+import Config from '../config/app'
 
 export function currentUrlToParams(key = null) {
     let paramsUrl = (window.location.href).split('?');
@@ -15,3 +15,18 @@ export function currentUrlToParams(key = null) {
 
 
 
+export function getToken() {
+    return localStorage.getItem(Config.accessTokenKey);
+}
+
+export function setToken(token) {
+    return localStorage.setItem(Config.accessTokenKey,token);
+}
+
+export function getUserInfo() {
+    return JSON.parse(localStorage.getItem(Config.userInfoKey));
+}
+
+export function setUserInfo(userInfo) {
+    return localStorage.setItem(Config.userInfoKey,JSON.stringify(userInfo));
+}
