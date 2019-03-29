@@ -6,7 +6,7 @@
 </template>
 
 <script>
-    import {wechatSignature} from '../../utils/weixin'
+    
     export default {
         name: 'app',
         data: function () {
@@ -17,7 +17,7 @@
         methods: {},
         mounted() {
 
-            console.log(wechatSignature().then(r=>{alert('ttt')}).catch(r=>{alert(r)}))
+            
         },
         beforeDestroy: function () {
 
