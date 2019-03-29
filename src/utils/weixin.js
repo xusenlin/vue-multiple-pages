@@ -14,7 +14,7 @@ import {wechatSignatureApi} from '../api/api.js'
 function wechatSignature(apiList = []) {
     return new Promise((resolve, reject) => {
         if (!isWechat) {
-            reject('请在微信客户端打开')
+            return reject('请在微信客户端打开')
         }
         if (apiList.length = 0) {
             apiList = ['onMenuShareTimeline', 'onMenuShareAppMessage', 'showMenuItems', 'hideOptionMenu', 'closeWindow']
