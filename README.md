@@ -1,7 +1,6 @@
-# vueCli3Mobile
-## 一个开箱即用的移动端vue多页面脚手架。规划了目录，添加了常用组件和库。
+# Vue Multiple Pages
 
-### Project setup
+## Project setup
 ```
 npm install
 ```
@@ -16,11 +15,43 @@ npm run dev
 npm run build
 ```
 
+
+> 一个基于vue-cli3脚手架的多页面vue移动端模板
+
+*添加了移动端相关工具如 1px问题、300s点击延迟、px自动转rem工具，以及微信签名和请求的封装等*
+
+
+## 目录结构介绍 ##
+
+	|-- dist                             // 打包目录
+	|-- src                              // 源码目录
+	|   |-- api                          // Api接口目录
+	|       |-- user.js           	     //用户登录、头像上传、密码修改等用户相关api
+	|       |-- page.js           	     // 每一个页面的配置,标题之类的
+	|   |-- assets                       // 静态资源，你的css、图片、字体等。
+	|   |-- components                   //全局组件
+	|   |-- config                       // 应用的配置文件
+	|       |-- app.js                   // 应用的配置，名字，api请求的url，
+	|       |-- xxx.js                   // 其他配置文件，建议分类清楚，如post.js用于文章相关配置
+	|   |-- utils                        // 工具函数。和config,api一个道理，建议分类清楚。
+    |       |-- app.js                   // 常用函数
+    |       |-- request.js               // 请求封装
+	|       |-- weixin.js                // 微信jssdk的封装，使用请先安装weixin-js-sdk
+	|       |-- setHtmlFontSize.js       // 设置根元素字体大小，配合rem做屏幕适配
+	|   |-- pages                        // 页面视图。里面文件夹建议使用大驼峰,因为这样比较好看 - -
+	|       |-- index                    // 首页
+	|       |-- common.js                // 公共的js，可以引公共的css,vue ui库等
+	|-- .gitignore                       // 忽略的文件
+	|-- page.config.js                   // 使用node读取pages文件夹下的文件夹配置到vue cli3
+	|-- vue.config.js                    // vue cli 配置
+	|-- README.md                        // 说明
+
+
+
 ## 说明
 * 使用normalize.css重置样式。
 * 添加了axios请求库，并做了简单的拦截。
-*添加了fastclick解决移动端300ms点击延迟。
-*添加了Vant UI库,基本能满足大部分交互。
+* 添加了fastclick解决移动端300ms点击延迟。
+* 想要添加自己 UI库,安装好在common.js引用即可。
 * 添加postcss-px2rem自动将px转换为rem适配移动端，目前为了和大部分ui库兼容，设置的设计稿宽度为375，可自行修改。
 * 添加页面请在pages文件夹下新建目录，在里面放置index.js和Index.vue（建议复制template文件夹修改名字进行开发）。编译后，目录的名字即为网页的名字。至于为什么？请查看page.config.js。
-
