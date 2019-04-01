@@ -33,8 +33,8 @@ npm run build
 	|       |-- app.js                   // 应用的配置，名字，api请求的url，
 	|       |-- page.js           	     // 每一个页面的配置,标题之类的
 	|   |-- utils                        // 工具函数。和config,api一个道理，建议分类清楚。
-        |       |-- app.js                   // 常用函数
-        |       |-- request.js               // 请求封装
+    |       |-- app.js                   // 常用函数
+    |       |-- request.js               // 请求封装
 	|       |-- weixin.js                // 微信jssdk的封装，使用请先安装weixin-js-sdk
 	|       |-- setHtmlFontSize.js       // 设置根元素字体大小，配合rem做屏幕适配
 	|   |-- pages                        // 页面视图。里面文件夹建议使用大驼峰,因为这样比较好看 - -
