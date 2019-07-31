@@ -16,7 +16,7 @@ function wechatSignature(apiList = []) {
         if (!isWechat) {
             return reject('请在微信客户端打开')
         }
-        if (apiList.length = 0) {
+        if (0 === apiList.length) {
             apiList = ['onMenuShareTimeline', 'onMenuShareAppMessage', 'showMenuItems', 'hideOptionMenu', 'closeWindow']
         }
         wechatSignatureApi({url:window.location.href}).then(r=>{
