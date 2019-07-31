@@ -12,9 +12,12 @@ npm run dev
 
 ### Compiles and minifies for production
 ```
-npm run build
+npm run build:dev  //打包开发环境
+npm run build:devtest //打包开发测试环境
+npm run build:test //打包测试环境
+npm run build // 打包正式环境
 ```
-
+在config里配置不同的打包环境使用不同的api地址等。
 
 > 一个基于vue-cli3脚手架的多页面vue移动端模板
 
@@ -37,7 +40,7 @@ npm run build
     |       |-- request.js               // 请求封装
 	|       |-- weixin.js                // 微信jssdk的封装，使用请先安装weixin-js-sdk
 	|       |-- setHtmlFontSize.js       // 设置根元素字体大小，配合rem做屏幕适配
-	|   |-- pages                        // 页面视图。里面文件夹建议使用大驼峰,因为这样比较好看 - -
+	|   |-- pages                        // 页面视图
 	|       |-- index                    // 首页
 	|       |-- common.js                // 公共的js，可以引公共的css,vue ui库等
 	|-- .gitignore                       // 忽略的文件
