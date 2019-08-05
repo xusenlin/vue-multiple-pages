@@ -41,7 +41,7 @@ npm run build // 打包正式环境
 	|       |-- weixin.js                // 微信jssdk的封装，使用请先安装weixin-js-sdk
 	|       |-- setHtmlFontSize.js       // 设置根元素字体大小，配合rem做屏幕适配
 	|   |-- pages                        // 页面视图
-	|       |-- index                    // 首页
+	|       |-- index                    // 首页,支持子目录作为页面
 	|       |-- common.js                // 公共的js，可以引公共的css,vue ui库等
 	|-- .gitignore                       // 忽略的文件
 	|-- page.config.js                   // 使用node读取pages文件夹下的文件夹配置到vue cli3
@@ -56,4 +56,4 @@ npm run build // 打包正式环境
 * 添加了fastclick解决移动端300ms点击延迟。
 * 想要添加自己 UI库,安装好在common.js引用即可。
 * 添加postcss-px2rem自动将px转换为rem适配移动端，目前为了和大部分ui库兼容，设置的设计稿宽度为375，可自行修改。
-* 添加页面请在pages文件夹下新建目录，在里面放置index.js和Index.vue（建议复制template文件夹修改名字进行开发）。编译后，目录的名字即为网页的名字。至于为什么？请查看page.config.js。
+* 添加页面请在pages文件夹下新建目录，在里面放置index.js和Index.vue（建议复制template文件夹修改名字进行开发，支持多个页面放置在同一个文件夹）。编译后，目录的名字即为网页的名字。至于为什么？请查看page.config.js。
