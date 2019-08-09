@@ -39,6 +39,4 @@ function isPage(dir){
 
 addPageConfig('src','pages');
 
-console.log(pageConfig);
-
 module.exports = pageConfig;
