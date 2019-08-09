@@ -34,7 +34,7 @@ export default {
     apiUrl:useApiUrl,
     apiPrefix : "",
     timeout:1000,
-    accessTokenKey:'ACCESS_TOKEN',
+    accessTokenKey:'ACCESS_TOKEN',//如果多个应用在同一个域下，本地存储最好添加前缀
     userInfoKey:'USER_INFO',
     requestRetry:4,
     requestRetryDelay:800,

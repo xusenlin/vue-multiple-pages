@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-       调查页面
+        Template
     </div>
 </template>
 

@@ -14,7 +14,7 @@ function addPageConfig(path,dir){
             template = path + '/' + dir + '/index.html';
         }
         pageConfig[dir] = {
-            entry: path +'/index.js',
+            entry: path + '/' + dir +'/index.js',
             filename: dir + '.html',
             path:dir,
             title: Config.hasOwnProperty(dir) ? Config[dir].title : '',
@@ -39,6 +39,6 @@ function isPage(dir){
 
 addPageConfig('src','pages');
 
-// console.log(pageConfig);
+console.log(pageConfig);
 
 module.exports = pageConfig;

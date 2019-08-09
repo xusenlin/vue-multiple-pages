@@ -9,65 +9,56 @@ const service = Axios.create({
         'Accept': '*/*'
     },
     timeout: Config.timeout
-})
+});
 
 service.defaults.retry = Config.requestRetry;
 service.defaults.retryDelay = Config.requestRetryDelay;
+let LoadingInstance = null;
 
 service.interceptors.request.use(
     config => {
 
         if(!config.closeLoading){
             //加载提示
-            // window.loadingInstance = Toast.loading({
+            // window.LoadingInstance = Toast.loading({
             //     mask: true,
             //     message: '加载中...'
             // });
         }
-
-        let noParameters = config.url.indexOf('?')  == -1;
-        //config.headers['X-Token'] = getToken() //
-        config.url = noParameters ? config.url+'?access_token=' + getToken(): config.url+'&access_token='+ getToken();
-
-        return config
+        config.headers['Authorization'] = getToken() || '';
+        return config;
     },
     error => {
-        Promise.reject(error)
+        Promise.reject(error);
     }
-)
+);
 
 service.interceptors.response.use(
-    response => {
-        if(!response.config.closeLoading){
-            setTimeout(_=>{
-                if(window.loadingInstance){
-                    window.loadingInstance.clear();
-                }
-            },400);
-        }
+    res => {
 
-        const res = response
+        //if(LoadingInstance){LoadingInstance.clear();}
+
         if (res.status !== 200) {
             //Toast('数据返回出错');
-            return Promise.reject('error')
+            return Promise.reject('响应非200！')
         } else {
-            if(res.data.resultCode != 200){
-                Toast(res.data.message);
+            if(res.data.code != 100000){
+
+                if (res.config.closeInterceptors) {
+                    return Promise.reject(res.data)//自己处理错误
+                }
+                //统一处理错误
+                //Toast(res.data.msg);
                 return Promise.reject('error');
             }
             return res.data.data
         }
     },
     error => {
-
-        setTimeout(_=>{
-            if(window.loadingInstance){
-                window.loadingInstance.clear();
-            }
-        },300);
-        //Toast("请求未响应");
+        //if(LoadingInstance){LoadingInstance.clear();}
+        //Toast("网络错误");
         return Promise.reject(error)
     }
-)
+);
 
 export default service

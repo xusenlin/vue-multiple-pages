@@ -1,7 +1,11 @@
 module.exports = {
-
-    login:{
-        title:'登录'
+    demo:{
+        title:'演示',
+        requiredParams:{//必填参数
+            userId:'url必须携带用户Id'
+        },
+        optionalParams:{//可选参数
+        },
     },
     index:{
         title:'首页'
@@ -9,4 +13,4 @@ module.exports = {
     template:{
         title:'Template'
     }
-}
+};

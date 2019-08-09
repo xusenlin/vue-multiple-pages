@@ -7,6 +7,13 @@
     <meta name="format-detection" content="telephone=yes" />
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title><%= htmlWebpackPlugin.options.title %></title>
+    <% if(!("production" == process.env.NODE_ENV && undefined == process.env.VUE_APP_MODE)){ %>
+    <script src="//cdn.jsdelivr.net/npm/eruda"></script>
+    <script>eruda.init();</script>
+    <% } %>
+    <script>
+      window.PAGE_PATH = '<%= htmlWebpackPlugin.options.path %>';
+    </script>
   </head>
   <body>
     <noscript>
