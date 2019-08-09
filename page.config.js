@@ -1,5 +1,5 @@
 const fs = require("fs");
-const Config = require("./src/config/page.js")
+const Config = require("./src/config/page.js");
 
 let pageConfig = {};
 

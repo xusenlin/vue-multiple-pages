@@ -20,13 +20,13 @@ export function currentUrlToParams(key = null) {
  * @returns {string|string}
  */
 export function obj2StrParams(obj,firstStr = '?') {
+
     let params = firstStr;
+
     for (let p in obj){
-        let isFirst = ( params === '?');
-        let qz = isFirst ? '' : (params === '&' ? '' : '&');
-        params += (qz + p + '=' + obj[p] )
+        params += ((p +'=' + obj[p]) + '&');
     }
-    return params
+    return params.substring(0,params.length - 1)
 }
 
 
