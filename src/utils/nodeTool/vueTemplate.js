@@ -1,3 +1,6 @@
+
+
+module.exports = VueTemplate = `
 <template>
     <div id="app">
         Template
@@ -6,7 +9,7 @@
 
 <script>
     export default {
-        name: 'app',
+        name: 'App',
         data: function () {
             return {}
         },
@@ -22,6 +25,7 @@
 </script>
 <style scoped lang="scss">
     #app{
-
+    
     }
 </style>
+`;
