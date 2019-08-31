@@ -37,7 +37,7 @@ Utils.updatePageConfig(Argv.n);
 VueTemplate.replace('id="app"','id="'+ Argv.n +'"');
 VueTemplate.replace('#app','#'+ Argv.n);
 
-fs.writeFileSync(workPageDir + '/index.vue',VueTemplate.replace('id="app"','id="'+ Argv.n +'"'));
+fs.writeFileSync(workPageDir + '/Index.vue',VueTemplate.replace('id="app"','id="'+ Argv.n +'"'));
 fs.writeFileSync(workPageDir + '/index.js',JsTemplate);
 
 console.log('生成页面成功，请重新运行npm run dev');
