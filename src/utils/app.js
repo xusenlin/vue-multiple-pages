@@ -1,4 +1,4 @@
-import Config from '../config/app'
+import Config from '@/config/app.js'
 
 export function currentUrlToParams(key = null) {
     let paramsUrl = (window.location.href).split('?');
@@ -81,3 +81,17 @@ export function fillerLeft(obj,row = {}) {
 }
 
 
+/*
+获取当前url
+http://192.168.49.71:8081/ => http://192.168.49.71:8081/
+http://192.168.49.71:8081/mm/ => http://192.168.49.71:8081/mm/
+http://192.168.49.71:8081/mm/index.html => http://192.168.49.71:8081/mm/
+http://192.168.49.71:8081/mm/ff/login.html?id=55 => http://192.168.49.71:8081/mm/ff/
+
+html不能能匹配除\w 的地址，也就是说你的html名字必须由a-z、A-Z、0-9，以及下划线组成才可以。
+*/
+export function getCurrentUrl() {
+    let allUrl = window.location.href;
+    let match = allUrl.match(/(\S+\/)\w+.html/i);
+    return (match && Array.isArray(match) && (match.length > 1)) ? match[1] : allUrl;
+}

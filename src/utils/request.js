@@ -1,6 +1,6 @@
 import Axios from 'axios'
-import Config from '../config/app.js'
-import {getToken}  from '../utils/app'
+import Config from '@/config/app.js'
+import {getToken}  from '@/utils/app.js'
 //import { Toast } from 'vant';
 
 const service = Axios.create({

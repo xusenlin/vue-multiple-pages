@@ -1,4 +1,4 @@
-import Config from '../config/app.js'
+import Config from '@/config/app.js'
 
 // 基准大小
 const baseSize = 100;

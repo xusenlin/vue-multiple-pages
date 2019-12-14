@@ -2,7 +2,7 @@ import 'normalize.css'
 // import 'vant/lib/index.css';
 import '@/assets/css/style.scss'
 import fastClick from 'fastclick'
-import {setHtmlFontSize} from  '../utils/setHtmlFontSize.js'
+import {setHtmlFontSize} from  '@/utils/setHtmlFontSize.js'
 import {validateAndInitUrlParams} from '@/utils/validateAndInitUrlParams.js'
 
 

@@ -5,6 +5,7 @@
 //import wx from 'weixin-js-sdk';
 import {isWechat} from './isTerminal.js'
 import {wechatSignatureApi} from '../api/api.js'
+import Config from "@/config/app";
 
 /**
  * 签名
@@ -170,7 +171,38 @@ function closeWechatWindow() {
 
 
 
+function WechatPay(params) {
+    if (!isWechat  || typeof WeixinJSBridge == "undefined"){
+        //Toast("检测不到微信环境");
+        return;
+    }
+
+    WeixinJSBridge.invoke(
+      'getBrandWCPayRequest', {
+          "appId":params.appId,
+          "timeStamp":params.timeStamp,
+          "nonceStr":params.nonceStr,
+          "package":params.packageValue,
+          "signType":params.signType,
+          "paySign":params.paySign
+      },
+      function(res){
+          if(res.err_msg == "get_brand_wcpay_request:ok" ){
+              // 使用以上方式判断前端返回,微信团队郑重提示：
+              //res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
+             // Toast('支付成功！');
+              // window.location.href = `${Config.sharePageUrl}/paySuccess.html?orderNo=` + params.orderNo;
+          }else {
+              //Toast('支付失败，请重试！')
+          }
+      }
+    );
+
+}
+
+
 export {
+    WechatPay,
     shareFriend,
     shareFriendQ,
     hideMenuItems,
