@@ -31,7 +31,7 @@ function addPageConfig(path,dir){
 }
 
 function isPage(dir){
-    if(fs.existsSync(dir + '/index.js') && fs.existsSync(dir + '/index.vue')){
+    if(fs.existsSync(dir + '/index.js') && fs.existsSync(dir + '/Index.vue')){
         return true
     }
     return false
