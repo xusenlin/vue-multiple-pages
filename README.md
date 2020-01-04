@@ -52,7 +52,11 @@ window.location.href = "./demo.html" + obj2StrParams(params)
 我们还需要fastclick js去解决移动端点击300ms延迟吗？
 从Chrome 32（早在2014年）开始，这种针对移动设备优化的网站的延迟就消失了，
 而无需消除缩放问题！Firefox和IE / Edge之后不久也做了同样的事情，并在2016年3月在iOS 9.3中进行了类似的修复。
-只要您<head>包括：<meta name="viewport" content="width=device-width">，浏览器就会以这种方式假定您已使文本在移动设备上可读，因此无需双击。
+只要您 head 包括：
+```html
+<meta name="viewport" content="width=device-width">
+```
+浏览器就会以这种方式假定您已使文本在移动设备上可读，因此无需双击。
 
 ---
 还有各种移动端奇形怪状的问题解决方案
