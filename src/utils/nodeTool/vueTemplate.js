@@ -1,31 +1,25 @@
-
-
-module.exports = VueTemplate = `
-<template>
-    <div id="app">
-        Template
+module.exports = `<template>
+  <div id="app" class="app">
+    <div>
+      ...
     </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: 'App',
-        data: function () {
-            return {}
-        },
-        methods: {},
-        mounted() {
-
-        },
-        beforeDestroy: function () {
-
-        },
-        components: {}
-    }
+export default {
+  name: "app",
+  data: function() {
+    return {};
+  },
+  methods: {},
+  mounted() {},
+  beforeDestroy: function() {},
+  components: {}
+};
 </script>
-<style scoped lang="scss">
-    #app{
-    
-    }
+<style lang="scss">
+.app {
+}
 </style>
 `;

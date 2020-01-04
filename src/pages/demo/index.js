@@ -1,7 +1,11 @@
-import Vue from 'vue'
-import App from './Index.vue'
-import '../common'
+import Vue from "vue";
+import App from "./Index.vue";
+import { validateInitUrlParams } from "@/utils/validateInitParams.js";
+import "@/pages/common.js";
 
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
+if (validateInitUrlParams()) {
+  //初始化完成 window.PAGE_PARAMS 和 window.PAGE_PATH 可用
+  new Vue({
+    render: h => h(App)
+  }).$mount("#app");
+}
