@@ -28,7 +28,7 @@ yarn lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-
+这是一个做了大量移动端的vue多页面最佳实践(自我认为)。使用了全新依赖和ESLint+Prettier第二次重构(2020.01)。
 
 ### 说明
 * 使用normalize.css重置样式。
@@ -41,8 +41,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 * 添加postcss-px2rem自动将px转换为rem适配移动端，目前为了和大部分ui库兼容，设置的设计稿宽度为375，可自行修改。
 * 添加了node工具，在src/utils/nodeTool下，运行node index.js -h 即可查看使用方法。
 * 添加页面请在pages文件夹下新建目录，在里面放置index.js和Index.vue（建议使用提供的node工具生成页面，他会更新你的配置）。编译后，目录的名字即为网页的名字。至于为什么？请查看page.config.js。
-
-注意：如果页面太多，可以通过在pages下添加分组目录来分类页面，没有路由（vue-route）,页面跳转请使用
+* 如果页面太多，可以通过在pages下添加分组目录来分类页面,支持无限层级目录，只要目录里存在index.js和Index.vue 即被认为是一个页面。
+* 没有路由（vue-route）,页面跳转请使用
 ```javascript
 window.location.href = "./demo.html" + obj2StrParams(params)
 ```
