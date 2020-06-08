@@ -61,3 +61,6 @@ window.location.href = "./demo.html" + obj2StrParams(params)
 ---
 还有各种移动端奇形怪状的问题解决方案
 https://juejin.im/post/5d6e1899e51d453b1e478b29
+
+
+> 番外： [MareWood](https://github.com/xusenlin/MareWood) 是一个Go开发的轻量级前端部署工具,可以很灵活的配置各种打包部署环境并提供访问,特别是远程的时候，方便后端和测试使用,草鸡好用。
