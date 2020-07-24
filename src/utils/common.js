@@ -80,7 +80,7 @@ export function fillerLeft(object, valObject = {}) {
  * @returns {null|*|undefined|{}}
  */
 export function getUserInfo(key = null) {
-  let userInfo = Storage.get(Config.userInfoKey);
+  let userInfo = Storage.get(Config.userInfoKey) || {};
   if (key) return userInfo.hasOwnProperty(key) ? userInfo[key] : null;
   return userInfo || {};
 }

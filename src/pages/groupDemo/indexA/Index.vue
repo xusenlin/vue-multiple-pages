@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="app">
     <div>
-      首页
+      首页A
     </div>
   </div>
 </template>

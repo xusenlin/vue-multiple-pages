@@ -1,11 +1,16 @@
-import "normalize.css";
 import Vue from "vue";
 import App from "./Index.vue";
-import { validateInitUrlParams } from "@/utils/validateInitParams.js";
+import "@/pages/common.js";
+import { validateInitPage } from "@/utils/validateInitPage.js";
 
-if (validateInitUrlParams()) {
-  //初始化完成 window.PAGE_PARAMS 和 window.PAGE_PATH 可用
-  new Vue({
-    render: h => h(App)
-  }).$mount("#app");
-}
+validateInitPage() //这里还可以链式then做一些权限拦截
+  .then((pageName, pageParams) => {
+    Vue.prototype.$pageName = pageName;
+    Vue.prototype.$pageParams = pageParams;
+    new Vue({
+      render: h => h(App)
+    }).$mount("#app");
+  })
+  .catch(e => {
+    console.log(e);
+  });
