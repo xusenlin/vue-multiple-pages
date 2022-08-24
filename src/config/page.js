@@ -4,7 +4,6 @@ module.exports = {
     title: "演示",
     requiredParams: {},
     optionalParams: {
-      //必填参数
       userId: "url必须携带用户Id"
     }
   },

@@ -5,7 +5,7 @@ let pageConfig = {};
 
 function addPageConfig(path, dir) {
   if (isPage(path + "/" + dir)) {
-    if (pageConfig.hasOwnProperty(dir)) {
+    if (pageConfig.dir) {
       throw new Error("有名字重复的页面:" + dir);
     }
     let template = "public/index.html";
@@ -14,10 +14,10 @@ function addPageConfig(path, dir) {
       template = path + "/" + dir + "/index.html";
     }
     pageConfig[dir] = {
-      entry: path + "/" + dir + "/index.js",
+      entry: path + "/" + dir + "/main.js",
       filename: dir + ".html",
       path: dir,
-      title: Config.hasOwnProperty(dir) ? Config[dir].title : "",
+      title: Config.dir ? Config[dir].title : "",
       template: template
     };
   }
@@ -31,7 +31,7 @@ function addPageConfig(path, dir) {
 }
 
 function isPage(dir) {
-  return fs.existsSync(dir + "/index.js") && fs.existsSync(dir + "/Index.vue");
+  return fs.existsSync(dir + "/main.js") && fs.existsSync(dir + "/App.vue");
 }
 
 addPageConfig("src", "pages");

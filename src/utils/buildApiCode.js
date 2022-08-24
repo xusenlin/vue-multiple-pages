@@ -91,7 +91,7 @@ ApiList.forEach(r => {
  */
 export function ${methodName}(params) {
     return request({
-        url: "${path.replace("/api", "")}",
+        url: "${path}",
         method: '${isPostMethod ? "post" : "get"}',
         ${isPostMethod ? "data" : "params"}: params
     })

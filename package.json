@@ -1,35 +1,48 @@
 {
-  "name": "vuemultiplepages",
+  "name": "vue-multiple-pages",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "build:dev": "vue-cli-service build  --mode dev",
-    "build:devtest": "vue-cli-service build  --mode devtest",
-    "build:test": "vue-cli-service build --mode test",
+    "dev": "vue-cli-service serve --mode dev",
+    "build": "vue-cli-service build  --mode pro",
+    "build:pre": "vue-cli-service build --mode pre",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "core-js": "^3.4.4",
-    "good-storage": "^1.1.0",
-    "normalize.css": "^8.0.1",
-    "vue": "^2.6.10"
+    "axios": "^0.27.2",
+    "good-storage": "^1.1.1",
+    "vant": "^4.0.0-beta.0",
+    "vue": "^3.2.13"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^4.1.0",
-    "@vue/cli-plugin-eslint": "^4.1.0",
-    "@vue/cli-service": "^4.1.0",
-    "@vue/eslint-config-prettier": "^5.0.0",
-    "babel-eslint": "^10.0.3",
-    "eslint": "^5.16.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "eslint-plugin-vue": "^5.0.0",
-    "node-sass": "^4.13.1",
-    "postcss-px2rem": "^0.3.0",
-    "prettier": "^1.19.1",
-    "sass-loader": "^8.0.0",
-    "vue-template-compiler": "^2.6.10"
-  }
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "core-js": "^3.8.3",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "postcss-px-to-viewport": "^1.1.1",
+    "sass": "^1.54.5",
+    "sass-loader": "^13.0.2"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true,
+      "vue/setup-compiler-macros": true
+    },
+    "extends": [
+      "plugin:vue/vue3-essential",
+      "eslint:recommended"
+    ],
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ]
 }

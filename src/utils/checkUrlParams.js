@@ -1,4 +1,4 @@
-import { currentUrlToParams } from "./common.js";
+import { getPageParams } from "./common.js";
 import allPageConfig from "@/config/page.js";
 
 let pageName = window.PAGE_PATH; //PAGE_PATH在public中定义。
@@ -8,15 +8,15 @@ function validateParams(requiredParams = {}, pageParams) {
   let errorMsg = [];
   if (Object.keys(requiredParams).length === 0) return errorMsg;
   for (let key in requiredParams) {
-    if (!pageParams.hasOwnProperty(key)) {
+    if (!pageParams.key) {
       errorMsg.push({ name: key, desc: requiredParams[key] });
     }
   }
   return errorMsg;
 }
 
-export function validateInitPage() {
-  let pageParams = currentUrlToParams();
+export function initPage() {
+  let pageParams = getPageParams();
   let errorMsg = validateParams(pageConfig.requiredParams, pageParams);
 
   return new Promise((resolve, reject) => {

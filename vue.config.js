@@ -1,24 +1,31 @@
-let pagesConfig = require("./page.config.js");
+const { defineConfig } = require('@vue/cli-service')
 
-const px2rem = require("postcss-px2rem");
+const pxtovw = require('postcss-px-to-viewport')
+const pagesConfig = require("./page.config.js");
 
-const postcss = px2rem({
-  remUnit: 100
-});
 
-module.exports = {
-  publicPath: "./",
-  outputDir: undefined,
-  assetsDir: undefined,
-  runtimeCompiler: undefined,
-  productionSourceMap: undefined,
-  parallel: undefined,
+module.exports = defineConfig({
+  transpileDependencies: true,
   pages: pagesConfig,
   css: {
     loaderOptions: {
       postcss: {
-        plugins: [postcss]
+        postcssOptions: {plugins:[
+            new pxtovw({
+              unitToConvert: "px",
+              viewportWidth: 375,
+              unitPrecision: 6,
+              propList: ["*"],
+              viewportUnit: "vw",
+              fontViewportUnit: "vw",
+              selectorBlackList: [],
+              minPixelValue: 1,
+              mediaQuery: true,
+              exclude: [],
+              landscape: false
+            })
+          ]}
       }
     }
   }
-};
+})

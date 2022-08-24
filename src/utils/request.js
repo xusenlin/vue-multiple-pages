@@ -1,49 +1,45 @@
 import Axios from "axios";
-import Config from "@/config/index.js";
 import { getToken } from "@/utils/common.js";
-//import { Toast } from "vant";
+import { showLoadingToast,closeToast } from "vant";
+import { baseURL,timeout,requestRetryDelay,requestRetry } from "@/config/request";
 
 const service = Axios.create({
-  baseURL: Config.apiUrl + "/" + Config.apiPrefix,
+  baseURL,
   headers: {
     Accept: "*/*"
   },
-  timeout: Config.timeout
+  timeout
 });
 
-service.defaults.retry = Config.requestRetry;
-service.defaults.retryDelay = Config.requestRetryDelay;
-// let LoadingInstance = null;
+service.defaults.retry = requestRetry;
+service.defaults.retryDelay = requestRetryDelay;
+
 
 service.interceptors.request.use(
   config => {
-    if (!config.closeLoading) {
-      //加载提示
-      // window.LoadingInstance = Toast.loading({
-      //     mask: true,
-      //     message: '加载中...'
-      // });
+    if (config.showLoading) {
+      showLoadingToast({
+        message: '加载中...',
+        forbidClick: true,
+      });
     }
     config.headers["Authorization"] = getToken();
     return config;
   },
   error => {
+    closeToast()
     Promise.reject(error);
   }
 );
 
 service.interceptors.response.use(
   res => {
-    //if(LoadingInstance){LoadingInstance.clear();}
-
+    closeToast()
     if (res.status !== 200) {
       //Toast('数据返回出错');
       return Promise.reject("响应非200！");
     } else {
       if (res.data.code != 100000) {
-        if (res.config.closeInterceptors) {
-          return Promise.reject(res.data); //自己处理错误
-        }
         //统一处理错误
         //Toast(res.data.msg);
         return Promise.reject("error");
@@ -52,10 +48,17 @@ service.interceptors.response.use(
     }
   },
   error => {
-    //if(LoadingInstance){LoadingInstance.clear();}
-    //Toast("网络错误");
     return Promise.reject(error);
   }
 );
 
 export default service;
+
+
+export const transformRequest = [function (data) {
+  let formData = new FormData()
+  for (let key in data) {
+    formData.append(key, data[key])
+  }
+  return formData
+}];

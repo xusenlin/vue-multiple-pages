@@ -1,8 +1,8 @@
 // 要使用请安装weixin-js-sdk
 //import wx from 'weixin-js-sdk';
-import { isWechat } from "./isTerminal.js";
-import { wechatSignatureApi } from "@/api/wechat/api.js";
-// import Config from "@/config/index.js";
+import { isWechat } from "@/utils/isTerminal";
+import { wechatSignatureApi } from "@/api/wechat/index";
+
 
 /**
  * 签名

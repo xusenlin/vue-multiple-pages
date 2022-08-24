@@ -1,7 +1,12 @@
 import Storage from "good-storage";
-import Config from "@/config/index.js";
+import { userInfoKey,tokenKey } from "@/config/app";
 
-export function currentUrlToParams(key = null) {
+/**
+ * 获取当前页面的参数
+ * @param key
+ * @returns {{}|null|*}
+ */
+export function getPageParams(key = null) {
   let paramsUrl = window.location.href.split("?");
   if (paramsUrl.length < 2) return key ? null : {};
   let paramsArr = paramsUrl[1].split("&");
@@ -10,7 +15,7 @@ export function currentUrlToParams(key = null) {
     let data = r.split("=");
     paramsData[data[0]] = data[1];
   });
-  if (key) return paramsData.hasOwnProperty(key) ? paramsData[key] : null;
+  if (key) return paramsData.key ? paramsData[key] : null;
   return paramsData;
 }
 
@@ -28,15 +33,16 @@ export function obj2StrParams(obj, firstStr = "?") {
   }
   return params.substring(0, params.length - 1);
 }
-/*
-获取当前url
-http://192.168.49.71:8081/ => http://192.168.49.71:8081/
-http://192.168.49.71:8081/mm/ => http://192.168.49.71:8081/mm/
-http://192.168.49.71:8081/mm/index.html => http://192.168.49.71:8081/mm/
-http://192.168.49.71:8081/mm/ff/login.html?id=55 => http://192.168.49.71:8081/mm/ff/
 
-页面名字不能能匹配除\w 的地址，也就是说你的页面名字名字必须由a-z、A-Z、0-9，以及下划线组成才可以。
-*/
+/**
+ * 获取当前url
+ * http://192.168.49.71:8081/ => http://192.168.49.71:8081/
+ * http://192.168.49.71:8081/mm/ => http://192.168.49.71:8081/mm/
+ * http://192.168.49.71:8081/mm/index.html => http://192.168.49.71:8081/mm/
+ * http://192.168.49.71:8081/mm/ff/login.html?id=55 => http://192.168.49.71:8081/mm/ff/
+ * 页面名字不能能匹配除\w 的地址，也就是说你的页面名字名字必须由a-z、A-Z、0-9，以及下划线组成才可以。
+ * @returns {string}
+ */
 export function getCurrentUrl() {
   let allUrl = window.location.href;
   let match = allUrl.match(/(\S+\/)\w+.html/i);
@@ -50,7 +56,7 @@ export function getCurrentUrl() {
  */
 export function resetObject(object, defaultVal = {}) {
   for (let k in object) {
-    if (defaultVal.hasOwnProperty(k)) {
+    if (defaultVal.k) {
       object[k] = defaultVal[k];
     } else {
       if (Array.isArray(object[k])) object[k] = [];
@@ -68,7 +74,7 @@ export function resetObject(object, defaultVal = {}) {
  */
 export function fillerLeft(object, valObject = {}) {
   for (let k in object) {
-    if (valObject.hasOwnProperty(k)) {
+    if (valObject.k) {
       object[k] = valObject[k];
     }
   }
@@ -80,8 +86,8 @@ export function fillerLeft(object, valObject = {}) {
  * @returns {null|*|undefined|{}}
  */
 export function getUserInfo(key = null) {
-  let userInfo = Storage.get(Config.userInfoKey) || {};
-  if (key) return userInfo.hasOwnProperty(key) ? userInfo[key] : null;
+  let userInfo = Storage.get(userInfoKey) || {};
+  if (key) return userInfo.key ? userInfo[key] : null;
   return userInfo || {};
 }
 
@@ -91,7 +97,7 @@ export function getUserInfo(key = null) {
  * @returns {*}
  */
 export function setUserInfo(user) {
-  Storage.set(Config.userInfoKey, user);
+  Storage.set(userInfoKey, user);
   return user;
 }
 
@@ -100,7 +106,7 @@ export function setUserInfo(user) {
  * @returns {*|undefined}
  */
 export function getToken() {
-  return Storage.get(Config.tokenKey);
+  return Storage.get(tokenKey);
 }
 
 /**
@@ -109,7 +115,7 @@ export function getToken() {
  * @returns {*|undefined}
  */
 export function setToken(token) {
-  return Storage.set(Config.tokenKey, token);
+  return Storage.set(tokenKey, token);
 }
 
 /**
@@ -117,5 +123,5 @@ export function setToken(token) {
  * @returns {*}
  */
 export function removeToken() {
-  return Storage.remove(Config.tokenKey);
+  return Storage.remove(tokenKey);
 }
