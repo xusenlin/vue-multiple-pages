@@ -1,6 +1,7 @@
 const { defineConfig } = require('@vue/cli-service')
 
-const pxtovw = require('postcss-px-to-viewport')
+const autoprefixer = require('autoprefixer');
+const pxtoviewport = require('postcss-px-to-viewport-8-plugin');
 const pagesConfig = require("./page.config.js");
 
 
@@ -11,18 +12,9 @@ module.exports = defineConfig({
     loaderOptions: {
       postcss: {
         postcssOptions: {plugins:[
-            new pxtovw({
-              unitToConvert: "px",
-              viewportWidth: 375,
-              unitPrecision: 6,
-              propList: ["*"],
-              viewportUnit: "vw",
-              fontViewportUnit: "vw",
-              selectorBlackList: [],
-              minPixelValue: 1,
-              mediaQuery: true,
-              exclude: [],
-              landscape: false
+            autoprefixer(),
+            pxtoviewport({
+              viewportWidth: 375
             })
           ]}
       }

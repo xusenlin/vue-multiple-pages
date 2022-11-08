@@ -5,13 +5,14 @@
   "scripts": {
     "dev": "vue-cli-service serve --mode dev",
     "build": "vue-cli-service build  --mode pro",
-    "build:pre": "vue-cli-service build --mode pre",
+    "build:dev": "vue-cli-service build --mode dev",
+    "build:test": "vue-cli-service build --mode test",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "axios": "^0.27.2",
     "good-storage": "^1.1.1",
-    "vant": "^4.0.0-beta.0",
+    "vant": "^4.0.0-rc.6",
     "vue": "^3.2.13"
   },
   "devDependencies": {
@@ -23,7 +24,7 @@
     "core-js": "^3.8.3",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
-    "postcss-px-to-viewport": "^1.1.1",
+    "postcss-px-to-viewport-8-plugin": "^1.1.5",
     "sass": "^1.54.5",
     "sass-loader": "^13.0.2"
   },
