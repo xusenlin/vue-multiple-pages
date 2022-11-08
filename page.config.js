@@ -17,7 +17,7 @@ function addPageConfig(path, dir) {
       entry: path + "/" + dir + "/main.js",
       filename: dir + ".html",
       path: dir,
-      title: Config.dir ? Config[dir].title : "",
+      title: Config[dir] ? Config[dir].title : "",
       template: template
     };
   }
