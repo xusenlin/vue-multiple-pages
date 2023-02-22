@@ -87,7 +87,7 @@ export function fillerLeft(object, valObject = {}) {
  */
 export function getUserInfo(key = null) {
   let userInfo = Storage.get(userInfoKey) || {};
-  if (key) return userInfo.key ? userInfo[key] : null;
+  if (key) return userInfo[key] ? userInfo[key] : null;
   return userInfo || {};
 }
 
