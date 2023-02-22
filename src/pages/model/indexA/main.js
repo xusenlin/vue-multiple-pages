@@ -3,7 +3,7 @@ import "@/assets/js/common"
 import {createApp} from 'vue'
 import {initPage} from "@/utils/checkUrlParams.js"
 
-initPage().then((pageName, pageParams) => {
+initPage().then(({pageName, pageParams}) => {
   window.$pageName = pageName;
   window.$pageParams = pageParams;
   createApp(App).mount('#app')

@@ -27,7 +27,7 @@ export function initPage() {
 </div>`;
       reject(errorMsg);
     } else {
-      resolve(pageName, pageParams);
+      resolve({pageName, pageParams});
     }
   });
 }
