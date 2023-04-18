@@ -15,7 +15,7 @@ export function getPageParams(key = null) {
     let data = r.split("=");
     paramsData[data[0]] = data[1];
   });
-  if (key) return paramsData.key ? paramsData[key] : null;
+  if (key) return paramsData[key] ? paramsData[key] : null;
   return paramsData;
 }
 
@@ -56,7 +56,7 @@ export function getCurrentUrl() {
  */
 export function resetObject(object, defaultVal = {}) {
   for (let k in object) {
-    if (defaultVal.k) {
+    if (defaultVal[k]) {
       object[k] = defaultVal[k];
     } else {
       if (Array.isArray(object[k])) object[k] = [];
@@ -74,7 +74,7 @@ export function resetObject(object, defaultVal = {}) {
  */
 export function fillerLeft(object, valObject = {}) {
   for (let k in object) {
-    if (valObject.k) {
+    if (valObject[k]) {
       object[k] = valObject[k];
     }
   }
